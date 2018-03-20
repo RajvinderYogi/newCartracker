@@ -1,0 +1,27 @@
+<% include ../shared/header.ejs %>
+<h1>Manufacturer Details</h1>
+<%if (user){%>
+<a href="../makes/add"> Add New Manufacturer</a>
+<%}%>
+<table class="table table-striped table-hover">
+<tr>
+    <th>Name</th>
+    <th>Country</th>
+    <th>Year Founded</th>
+    <%if (user){%>
+    <th>Action Buttons</th>
+    <%}%>
+</tr>
+<% for(j=0; j<makes.length; j++) { %>
+<tr>
+    <td><%= makes[j].name %></td>
+    <td><%= makes[j].country %></td>
+    <td><%= makes[j].yearFounded %></td>
+    <%if (user){%>
+    <td><a href="/makes/edit/<%= makes[j]._id%>" class="btn btn-primary col-md-2">Edit</a>
+         <a href="/makes/delete/<%= makes[j]._id%>" class="btn btn-danger col-md-2" onclick="return confirm('Are you sure want to delete this?')"> Delete</a></td>
+    <%}%>
+</tr>
+<%}%>
+</table>
+<% include ../shared/footer.ejs %>

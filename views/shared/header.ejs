@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title><%= title %></title>
+
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+</head>
+<body>
+
+<nav class="navbar navbar-light navbar-expand-lg bg-light">
+    <a class="navbar-brand" href="/">COMP2106 Car Tracker</a>
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+        <li class="nav-item"><a class="nav-link" href="/cars">Cars</a></li>
+        <li class="nav-item"><a class="nav-link" href="/makes">Manufacturers</a></li>
+    </ul>
+    <div class="justify-content-end">
+    <% if(!user){%><a href="/register" class="btn btn-primary">Register</a>
+    <a href="/login" class="btn btn-success">Login</a>
+        <%}
+        else{%>
+        <a href="#" ><%= user.username%></a>
+        <a href="/logout" class="btn btn-success">Logout</a>
+        <%}%>
+    </div>
+</nav>
+
+<main class="container-fluid" role="main">
