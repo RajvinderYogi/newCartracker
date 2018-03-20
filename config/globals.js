@@ -3,6 +3,7 @@ module.exports={
     google:{
         googleClientId:'56459079962-ju6v8j41eba57g23atidr7fegulhd4ga.apps.googleusercontent.com',
         googleClientSecret:'nEC9GUAZyBcoGeT4eZSoi7rs',
-        googleCallbackUrl:'http://localhost:3000/google/callback'
+        // googleCallbackUrl:'http://localhost:3000/google/callback'
+        googleCallbackUrl:'https://new-cartracker.azurewebsites.net/google/callback'
     }
 };
