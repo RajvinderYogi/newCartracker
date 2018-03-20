@@ -12,6 +12,7 @@ const config = require('./config/globals');
 const passport = require('passport');
 const session = require('express-session');
 const localStrategy = require('passport-local').Strategy;
+const googleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
 var index = require('./controllers/index');
 const cars = require('./controllers/cars');
@@ -48,6 +49,23 @@ app.use(passport.session());
 const User = require('./models/user');
 
 passport.use(User.createStrategy());
+
+
+
+passport.use(new googleStrategy({
+    clientID: config.google.googleClientId,
+    clientSecret: config.google.googleClientSecret,
+    callbackURL: config.google.googleCallbackUrl,
+    profileFields:['id', 'emails']
+},
+    (accessToken, refreshToken, profile, done) => {
+    User.findOrCreate({
+        googleId: profile.id,
+        username: profile.emails[0].value
+    },(err, user)=>{
+        return done (err, user)});
+}
+));
 
 // session management for users
 passport.serializeUser(User.serializeUser());
